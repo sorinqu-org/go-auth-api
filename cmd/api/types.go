@@ -1,9 +1,10 @@
 package api
 
-import "database/sql"
+import (
+	"github.com/jackc/pgx/v5"
+)
 
 type APIServer struct {
 	addr string
-	db *sql.DB
+	db   *pgx.Conn
 }
-

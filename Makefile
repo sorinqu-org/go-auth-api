@@ -1,4 +1,7 @@
-.PHONY: build test run down
+.PHONY: setup build test run down
+
+setup:
+	@chmod +x env.sh
 
 build:
 	@go build -o bin/app cmd/main.go
@@ -9,8 +12,8 @@ test:
 run: build
 	@docker compose up -d --build
 	@goose up
-	@./bin/app
+	@./env.sh
 
 down:
 	@docker compose down
-	@goose down
+	@goose down-to 0

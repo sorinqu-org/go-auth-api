@@ -1,16 +1,16 @@
 package api
 
 import (
-	"database/sql"
 	"log/slog"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/jackc/pgx/v5"
 	"github.com/sorinqu-org/go-auth-api/service/user"
 )
 
-func NewAPIServer(addr string, db *sql.DB) *APIServer {
+func NewAPIServer(addr string, db *pgx.Conn) *APIServer {
 	return &APIServer{
 		addr: addr,
 		db:   db,
